@@ -14,6 +14,10 @@
     <!-- Estilo customizado -->
     <link rel="stylesheet" type="text/css" href="css/estilo.css">
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script src="js/app.js"></script>
+
     <title>Trabalho 2 - Layout Responsivo</title>
   </head>
   <body>
@@ -103,10 +107,19 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 d-flex justify-content-center">
-            <h2>Em Destaque</h2>
+            <h3>Em Destaque</h3>
+            <div class="dropdown">
+              <button type="button" class="btn btn dropdown-toggle" data-bs-toggle="dropdown">
+                Categoria: TODOS
+              </button>
+              <ul class="dropdown-menu">
+                <button id="emdestaque_aventura" name="emdestaque" class="dropdown-item" type="button" value="12">Aventura</button>
+                <button id="emdestaque_romance" name="emdestaque" class="dropdown-item" type="button" value="10749">Romance</button>
+                <button id="emdestaque_comedia" name="emdestaque" class="dropdown-item" type="button" value="35">Comédia</button>
+              </ul>
+            </div>
           </div>
           <div id="emdestaque" class="row">
-            <script src="js/app.js"></script>
             <!--<div class="col-md-3 d-flex justify-content-center">
                 <div class="card" style="width: 15rem;">
                 <img class="card-img-top" src="imagens/bad_boys.jpg" alt="Imagem de capa do card">
@@ -130,7 +143,7 @@
                 <img class="card-img-top" src="imagens/X_men.jpg" alt="Imagem de capa do card">
                 </div>
             </div>-->
-          </div>
+          </div><button id="maisfilmesdestaque" type="button" class="btn btn-secondary btn-lg container-fluid"> + Carregar mais filmes</button>
         </div>
       </div>
     </section><!--/FIM seção destque -->

@@ -13,8 +13,56 @@ footer p a {
 }
 
 #imgRedonda{
-
     border-radius: 100%;
-    max-width: 100px; 
+    max-width: 100px;
+}
+
+.cointainerInterview {
+	border-bottom: 1px solid #e5e5e5;
+	padding: 60px;
+}
+
+.interviewVideos {
+	display: flex;
+	padding-top: 20px;
+	align-items: center;
+}
+
+.imgInterview{
+	width: 90%;
+}
+
+
+.divButton{
+	padding-top: 10px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+#interviewButton{
+	align-items: flex-end;
 	
+}
+
+
+.finalContainer{
+	display: grid;
+	grid-template-areas:
+	  'finalContainer1 finalContainer1 finalContainer2 finalContainer2'
+	  'finalContainer1 finalContainer1 finalContainer3 finalContainer3'
+}
+
+.Novidades {
+	grid-area: finalContainer1;
+	background-color: red;
+}
+
+.Sobre {
+	grid-area: finalContainer2;
+	background-color: black;
+}
+
+.Editorial {
+	grid-area: finalContainer3;
+	background-color: blue;
 }

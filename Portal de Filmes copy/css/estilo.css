@@ -14,7 +14,9 @@ footer p a {
 
 #imgRedonda{
     border-radius: 100%;
+<<<<<<< HEAD
     max-width: 100px; 
+=======
     max-width: 100px;
 }
 
@@ -66,4 +68,5 @@ footer p a {
 .Editorial {
 	grid-area: finalContainer3;
 	background-color: blue;
+>>>>>>> parcialChanges
 }

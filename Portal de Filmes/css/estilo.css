@@ -17,3 +17,7 @@ footer p a {
     border-radius: 100%;
     max-width: 100px; 
 }
+
+.rating-color {
+	color: orange;
+}

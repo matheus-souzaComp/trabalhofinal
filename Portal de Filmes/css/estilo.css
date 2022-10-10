@@ -25,13 +25,14 @@ footer p a {
 
 .interviewVideos {
 	display: flex;
+	justify-content: space-between;
 	padding-top: 20px;
-	align-items: center;
 }
 
 .imgInterview{
-	width: 90%;
 	height: 150px;
+	padding-right: 10px !important;
+	width: auto;
 }
 
 .divButton{
@@ -76,12 +77,30 @@ footer p a {
 	grid-area: finalContainer3;
 }
 
-/* Respondividade para mobile */
-@media only screen and (max-width: 767px) {
-	.cointainerInterview {
-		background-color: pink;
-	}
-}
 .rating-color {
 	color: orange;
 }
+
+/* Respondividade para mobile */
+@media only screen and (max-width: 767px) {
+	.interviewVideos {
+		display: block;
+	}
+	.imgInterview{
+		height: 300px;
+		padding-top: 10px !important;
+	}
+	.finalContainer{
+		display: block;
+	}
+	.imgNews{
+		height: 180px;
+	}
+	.Sobre{
+		margin-top: 15px;
+	}
+	footer{
+		margin-top: 15px;
+	}
+}
+

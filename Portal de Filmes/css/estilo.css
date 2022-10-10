@@ -13,11 +13,94 @@ footer p a {
 }
 
 #imgRedonda{
-
     border-radius: 100%;
-    max-width: 100px; 
+
+    max-width: 100px;
+}
+
+.cointainerInterview {
+	border-bottom: 1px solid #e5e5e5;
+	padding: 7%;
+}
+
+.interviewVideos {
+	display: flex;
+	justify-content: space-between;
+	padding-top: 20px;
+}
+
+.imgInterview{
+	height: 150px;
+	padding-right: 10px !important;
+	width: auto;
+}
+
+.divButton{
+	padding-top: 10px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+#interviewButton{
+	align-items: flex-end;
+}
+
+.finalContainer{
+	padding: 7%;
+	display: grid;
+	justify-content: space-around;
+	grid-template-areas:
+	  'finalContainer1 finalContainer2'
+	  'finalContainer1 finalContainer3'
+}
+
+.Novidades {
+	grid-area: finalContainer1;
+}
+
+.imgNews{
+	display: flex;
+	margin-top: 5%;
+}
+
+.textNews{
+	display: block;
+	padding: 5%;
+}
+
+.Sobre {
+	grid-area: finalContainer2;
+	background-color: blac;
+}
+
+.Editorial {
+	grid-area: finalContainer3;
 }
 
 .rating-color {
 	color: orange;
 }
+
+/* Respondividade para mobile */
+@media only screen and (max-width: 767px) {
+	.interviewVideos {
+		display: block;
+	}
+	.imgInterview{
+		height: 300px;
+		padding-top: 10px !important;
+	}
+	.finalContainer{
+		display: block;
+	}
+	.imgNews{
+		height: 180px;
+	}
+	.Sobre{
+		margin-top: 15px;
+	}
+	footer{
+		margin-top: 15px;
+	}
+}
+

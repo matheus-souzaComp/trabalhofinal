@@ -20,7 +20,7 @@ footer p a {
 
 .cointainerInterview {
 	border-bottom: 1px solid #e5e5e5;
-	padding: 60px;
+	padding: 7%;
 }
 
 .interviewVideos {
@@ -31,8 +31,8 @@ footer p a {
 
 .imgInterview{
 	width: 90%;
+	height: 150px;
 }
-
 
 .divButton{
 	padding-top: 10px;
@@ -42,28 +42,43 @@ footer p a {
 
 #interviewButton{
 	align-items: flex-end;
-	
 }
 
-
 .finalContainer{
+	padding: 7%;
 	display: grid;
+	justify-content: space-around;
 	grid-template-areas:
-	  'finalContainer1 finalContainer1 finalContainer2 finalContainer2'
-	  'finalContainer1 finalContainer1 finalContainer3 finalContainer3'
+	  'finalContainer1 finalContainer2'
+	  'finalContainer1 finalContainer3'
 }
 
 .Novidades {
 	grid-area: finalContainer1;
-	background-color: red;
+}
+
+.imgNews{
+	display: flex;
+	margin-top: 5%;
+}
+
+.textNews{
+	display: block;
+	padding: 5%;
 }
 
 .Sobre {
 	grid-area: finalContainer2;
-	background-color: black;
+	background-color: blac;
 }
 
 .Editorial {
 	grid-area: finalContainer3;
-	background-color: blue;
+}
+
+/* Respondividade para mobile */
+@media only screen and (max-width: 767px) {
+	.cointainerInterview {
+		background-color: pink;
+	}
 }

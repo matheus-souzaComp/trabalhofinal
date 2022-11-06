@@ -2,6 +2,8 @@ const APIKEY = '5a976adf57276b5aa87cc671b75a70fe'
 const ENDPOINT = 'https://api.themoviedb.org/3';
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 const DETALHES= 'https://www.themoviedb.org/movie/';
+let PAGE = 1
+let QUANTIDADE = 0
 
 
 const elem2 = document.getElementById('btnProcura')
@@ -63,8 +65,46 @@ fetch(`${ENDPOINT}/movie/popular?api_key=${APIKEY}&language=pt-BR`)
        })
        .catch (err => console.log (`Deu ruim: ${err.message}`))
 
+       
+const buttons = document.getElementsByClassName("dropdown-item");
+const buttonPressed = e => {
+    let genre_id_escolhido = e.target.value
 
+            fetch(`${ENDPOINT}/movie/popular?api_key=${APIKEY}&language=pt-BRpage=${PAGE}`)
+              .then (res2 => res2.json())
+              .then (data => {
+                   let str3 = ''
+                   for (x=0; x< data.results.length; x++) {
+                       if (data.results[x].genre_ids.includes(+genre_id_escolhido))
+                       {
+                          let filme = data.results[x];
+                          QUANTIDADE += 1
+                          str3 += 
+                          //window.open(window.location.href = "lancamentos.html",'_blank')
+                          `<div class="col-md-3 d-flex justify-content-center">
+                            <div class="card" style="width: 15rem;">
+                               <img class="card-img-top" src="${IMG_PATH}/${data.results[x].poster_path}" alt="Imagem de capa do filme ${data.results[x].title}">
+                               <h5 class="card-title text-center">${data.results[x].title}</h5>
+                            </div>
+                        </div>
+                        `
+                       }
+                       
+                   }
+                   //window.open("lancamentos.html", "mozillaWindow", "popup");
+                   
+                   //window.open(window.location.href = "lancamentos.html",'_blank')
+                   document.getElementById('emdestaque').innerHTML = str3
+              } )
+              .catch (err => console.log (`Deu ruim: ${err.message}`))
+}
+       
+for (let button of buttons) {
+ button.addEventListener("click", buttonPressed);
+}
+       
 
+/*
 const elem_emdestaque_aventura = document.getElementById('emdestaque_aventura')
 elem_emdestaque_aventura.addEventListener ('click',  () => {
            //div.style.display = "block";
@@ -96,3 +136,4 @@ elem_emdestaque_aventura.addEventListener ('click',  () => {
               } )
               .catch (err => console.log (`Deu ruim: ${err.message}`))
        })
+*/

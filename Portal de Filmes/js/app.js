@@ -10,7 +10,7 @@ fetch(`${ENDPOINT}/movie/popular?api_key=${APIKEY}&language=pt-BR`)
             for (x=0; x< 4; x++) {
                 str += `<div class="col-md-3 d-flex justify-content-center">
                             <div class="card" style="width: 15rem;">
-                               <img class="card-img-top" src="${IMG_PATH}/${data.results[x].poster_path}" alt="Imagem de capa do filme ${data.results[x].title}">
+                               <img class="card-img-top" src="${IMG_PATH}/${data.results[x].poster_path}" alt="Imagem de capa do filme ${data.results[x].title}" console.log('passou aqui tmb')>
                                <h5 class="card-title text-center">${data.results[x].title}</h5>
                             </div>
                         </div>

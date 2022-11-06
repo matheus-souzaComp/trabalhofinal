@@ -4,7 +4,7 @@ const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 const DETALHES= 'https://www.themoviedb.org/movie/';
 let PAGE = 1
 let QUANTIDADE = 0
-
+let images 
 
 const elem2 = document.getElementById('btnProcura')
 elem2.addEventListener ('click',  () => {
@@ -52,10 +52,11 @@ fetch(`${ENDPOINT}/movie/popular?api_key=${APIKEY}&language=pt-BR`)
        .then (res => res.json())
        .then (data => {
             let str = ''
+            images=data.results
             for (x=0; x< 4; x++) {
                 str += `<div class="col-md-3 d-flex justify-content-center">
                             <div class="card" style="width: 15rem;">
-                               <img class="card-img-top" src="${IMG_URL}/${data.results[x].poster_path}" alt="Imagem de capa do filme ${data.results[x].title}">
+                               <img class="card-img-top" src="${IMG_URL}/${data.results[x].poster_path}" alt="Imagem de capa do filme ${data.results[x].title}" onclick="expandDetails(${x})">
                                <h5 class="card-title text-center">${data.results[x].title}</h5>
                             </div>
                         </div>
@@ -84,7 +85,7 @@ const buttonPressed = e => {
               //window.open(window.location.href = "lancamentos.html",'_blank')
               `<div class="col-md-3 d-flex justify-content-center">
                 <div class="card" style="width: 15rem;">
-                  <img class="card-img-top" src="${IMG_URL}/${data.results[x].poster_path}" alt="Imagem de capa do filme ${data.results[x].title}">
+                  <img class="card-img-top" src="${IMG_URL}/${data.results[x].poster_path}" alt="Imagem de capa do filme ${data.results[x].title}" onclick="expandDetails(${x})>
                   <h5 class="card-title text-center">${data.results[x].title}</h5>
                 </div>
             </div>
@@ -113,7 +114,7 @@ maisfilmesdestaque.addEventListener ('click',  () => {
                   //window.open(window.location.href = "lancamentos.html",'_blank')
                   `<div class="col-md-3 d-flex justify-content-center">
                     <div class="card" style="width: 15rem;">
-                      <img class="card-img-top" src="${IMG_URL}/${data.results[x].poster_path}" alt="Imagem de capa do filme ${data.results[x].title}">
+                      <img class="card-img-top" src="${IMG_URL}/${data.results[x].poster_path}" alt="Imagem de capa do filme ${data.results[x].title}" onclick="expandDetails(${x})>
                       <h5 class="card-title text-center">${data.results[x].title}</h5>
                     </div>
                 </div>
@@ -167,3 +168,48 @@ elem_emdestaque_aventura.addEventListener ('click',  () => {
               .catch (err => console.log (`Deu ruim: ${err.message}`))
        })
 */
+
+
+function expandDetails(index) {
+  console.log('clicou', index)
+  let currentImage = images[index]
+  editado =   `<div class="text-center border border-gray" style="display: flex;">
+                  <div id="containerL">
+                      <img src="${IMG_PATH}${currentImage.poster_path}" ></img>
+                  </div>
+                  <div style="display: grid;align-items: center">
+                      <div class="card bg-light mb-3" >
+                          <p class="h3 card-title">Título</p>
+                          <p class="h5 card-text">${images[index].title}</p>
+                      </div>
+                      <div class="card bg-light mb-3" >
+                          <p class="h3 card-title">Descrição</p>
+                          <p class="h5 card-text">${images[index].overview}</p>
+                      </div>
+                      <div class="card bg-light mb-3" >
+                          <p class="h3 card-title">Data de lançamento</p>
+                          <p class="h5 card-text">${images[index].release_date}</p>
+                      </div>
+                      <div class="card bg-light mb-3" >
+                          <p class="h3 card-title">Contagem de votos</p>
+                          <p class="h5 card-text">${images[index].vote_count}</p>
+                      </div>
+                      <div class="card bg-light mb-3" >
+                          <p class="h3 card-title">Popularidade</p>
+                          <p class="h5 card-text">${images[index].popularity}</p>
+                      </div>
+                      <div class="card bg-light mb-3" >
+                          <p class="h3 card-title">Nota média</p>
+                          <p class="h4 card-text">${images[index].vote_average}</p>
+                      </div>
+                  </div>
+              </div>
+              `
+  document.getElementById('maisDetalhes').innerHTML = editado
+
+  // setTimeout(zerarData, 6000);
+}
+
+function zerarData() {
+  document.getElementById('maisDetalhes').innerHTML = ""
+}

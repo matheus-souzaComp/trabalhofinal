@@ -75,7 +75,8 @@ elem_emdestaque_aventura.addEventListener ('click',  () => {
               .then (data => {
                    let str3 = ''
                    for (x=0; x< data.results.length; x++) {
-                       if (data.results[x].genre_ids.includes(genre_id_escolhido)){
+                       if (data.results[x].genre_ids.includes(genre_id_escolhido))
+                       {
                           let filme = data.results[x];
                           str3 += 
                           //window.open(window.location.href = "lancamentos.html",'_blank')

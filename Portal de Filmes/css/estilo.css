@@ -81,6 +81,11 @@ footer p a {
 	color: orange;
 }
 
+.form-control{
+	padding: 5%;
+	margin-left: 10%;
+}
+
 /* Respondividade para mobile */
 @media only screen and (max-width: 767px) {
 	.interviewVideos {

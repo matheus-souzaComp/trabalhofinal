@@ -55,7 +55,7 @@ fetch(`${ENDPOINT}/movie/popular?api_key=${APIKEY}&language=pt-BR`)
             for (x=0; x< 4; x++) {
                 str += `<div class="col-md-3 d-flex justify-content-center">
                             <div class="card" style="width: 15rem;">
-                               <img class="card-img-top" src="${IMG_PATH}/${data.results[x].poster_path}" alt="Imagem de capa do filme ${data.results[x].title}">
+                               <img class="card-img-top" src="${IMG_URL}/${data.results[x].poster_path}" alt="Imagem de capa do filme ${data.results[x].title}">
                                <h5 class="card-title text-center">${data.results[x].title}</h5>
                             </div>
                         </div>
@@ -67,37 +67,67 @@ fetch(`${ENDPOINT}/movie/popular?api_key=${APIKEY}&language=pt-BR`)
 
        
 const buttons = document.getElementsByClassName("dropdown-item");
-const buttonPressed = e => {
-    let genre_id_escolhido = e.target.value
 
-            fetch(`${ENDPOINT}/movie/popular?api_key=${APIKEY}&language=pt-BRpage=${PAGE}`)
-              .then (res2 => res2.json())
-              .then (data => {
-                   let str3 = ''
-                   for (x=0; x< data.results.length; x++) {
-                       if (data.results[x].genre_ids.includes(+genre_id_escolhido))
-                       {
-                          let filme = data.results[x];
-                          QUANTIDADE += 1
-                          str3 += 
-                          //window.open(window.location.href = "lancamentos.html",'_blank')
-                          `<div class="col-md-3 d-flex justify-content-center">
-                            <div class="card" style="width: 15rem;">
-                               <img class="card-img-top" src="${IMG_PATH}/${data.results[x].poster_path}" alt="Imagem de capa do filme ${data.results[x].title}">
-                               <h5 class="card-title text-center">${data.results[x].title}</h5>
-                            </div>
-                        </div>
-                        `
-                       }
-                       
-                   }
-                   //window.open("lancamentos.html", "mozillaWindow", "popup");
-                   
-                   //window.open(window.location.href = "lancamentos.html",'_blank')
-                   document.getElementById('emdestaque').innerHTML = str3
-              } )
-              .catch (err => console.log (`Deu ruim: ${err.message}`))
+
+const buttonPressed = e => {
+  var genre_id_escolhido = e.target.value
+    let str3 = ''
+    fetch(`${ENDPOINT}/movie/popular?api_key=${APIKEY}&language=pt-BR&page=${PAGE}`)
+      .then (res2 => res2.json())
+      .then (data => {
+        for (x=0; x< data.results.length; x++) 
+        {
+          if (data.results[x].genre_ids.includes(+genre_id_escolhido))
+          {
+              let filme = data.results[x];
+              str3 += 
+              //window.open(window.location.href = "lancamentos.html",'_blank')
+              `<div class="col-md-3 d-flex justify-content-center">
+                <div class="card" style="width: 15rem;">
+                  <img class="card-img-top" src="${IMG_URL}/${data.results[x].poster_path}" alt="Imagem de capa do filme ${data.results[x].title}">
+                  <h5 class="card-title text-center">${data.results[x].title}</h5>
+                </div>
+            </div>
+            `
+          }
+        }
+        //window.open("lancamentos.html", "mozillaWindow", "popup");
+        
+        //window.open(window.location.href = "lancamentos.html",'_blank')
+        document.getElementById('emdestaque').innerHTML = str3
+      })
+      .catch (err => console.log (`Deu ruim: ${err.message}`))
+      PAGE += 1
+      console.log(PAGE)
 }
+
+const maisfilmesdestaque = document.getElementById('maisfilmesdestaque')
+maisfilmesdestaque.addEventListener ('click',  () => {
+  
+  fetch(`${ENDPOINT}/movie/popular?api_key=${APIKEY}&language=pt-BR&page=${PAGE}`)
+      .then (res2 => res2.json())
+      .then (data => {
+          for (x=0; x< data.results.length; x++) {
+                  let filme = data.results[x];
+                  console.log(getValue())
+                  str3 += 
+                  //window.open(window.location.href = "lancamentos.html",'_blank')
+                  `<div class="col-md-3 d-flex justify-content-center">
+                    <div class="card" style="width: 15rem;">
+                      <img class="card-img-top" src="${IMG_URL}/${data.results[x].poster_path}" alt="Imagem de capa do filme ${data.results[x].title}">
+                      <h5 class="card-title text-center">${data.results[x].title}</h5>
+                    </div>
+                </div>
+                `
+          }
+          //window.open("lancamentos.html", "mozillaWindow", "popup");
+          
+          //window.open(window.location.href = "lancamentos.html",'_blank')
+          document.getElementById('emdestaque').innerHTML = str3
+      } )
+      .catch (err => console.log (`Deu ruim: ${err.message}`))
+  })
+
        
 for (let button of buttons) {
  button.addEventListener("click", buttonPressed);

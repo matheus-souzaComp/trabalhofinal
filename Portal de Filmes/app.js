@@ -103,13 +103,12 @@ const buttonPressed = e => {
 
 const maisfilmesdestaque = document.getElementById('maisfilmesdestaque')
 maisfilmesdestaque.addEventListener ('click',  () => {
-  
+  let str3 = ''
   fetch(`${ENDPOINT}/movie/popular?api_key=${APIKEY}&language=pt-BR&page=${PAGE}`)
       .then (res2 => res2.json())
       .then (data => {
           for (x=0; x< data.results.length; x++) {
                   let filme = data.results[x];
-                  console.log(getValue())
                   str3 += 
                   //window.open(window.location.href = "lancamentos.html",'_blank')
                   `<div class="col-md-3 d-flex justify-content-center">
@@ -126,6 +125,7 @@ maisfilmesdestaque.addEventListener ('click',  () => {
           document.getElementById('emdestaque').innerHTML = str3
       } )
       .catch (err => console.log (`Deu ruim: ${err.message}`))
+      PAGE += 1
   })
 
        
